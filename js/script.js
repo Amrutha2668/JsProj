@@ -1,15 +1,15 @@
 //function to fetch json file
 function dataFormat() {
-  fetch("http://127.0.0.1:5500/./js/jOne.json")
+  fetch("./jOne.json")
     .then(r => r.json())
     .then(plot);
-  fetch("http://127.0.0.1:5500/./js/jTwo.json")
+  fetch("./jTwo.json")
     .then(r => r.json())
     .then(plot2);
-  fetch("http://127.0.0.1:5500/./js/jThree.json")
+  fetch("./jThree.json")
     .then(r => r.json())
     .then(plot3);
-  fetch("http://127.0.0.1:5500/./js/jFour.json")
+  fetch("./jFour.json")
     .then(r => r.json())
     .then(plot4);
 

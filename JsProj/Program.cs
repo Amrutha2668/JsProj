@@ -74,7 +74,7 @@ namespace DataProj
                             if (year >= 2000 && year <= 2019) regYears[year]++;
                         } //end of 2nd sol
 
-                        /*3rd sol condtn is reg year must be 2015 and pba not equall to NA */
+                        /*3rd sol condition is reg year must be 2015 and pba not equal to NA */
                         if (year == 2015 && !(principal.Equals("NA")))
                         {
                             if (!prncAct.ContainsKey(principal)) prncAct.Add(principal, 1);

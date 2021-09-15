@@ -19,9 +19,9 @@ dataFormat();
 
 // 1st problem solution
 function plot(data){
-    const seriesdata =[];
+    const seriesData =[];
     for(let i in data){
-        seriesdata.push([i,data[i]]);
+        seriesData.push([i,data[i]]);
         console.log([i,data[i]]);
     }
     console.log(data)
@@ -51,16 +51,16 @@ function plot(data){
         },
         series: [{
             name: 'Authorized capital',
-            data: seriesdata,
+            data: seriesData,
         }]
     });
   }
 
 // 2nd solution
 function plot2(data){
-  const seriesdata =[];
+  const seriesData =[];
   for(let i in data){
-      seriesdata.push([i,data[i]]);
+      seriesData.push([i,data[i]]);
       console.log(i,data[i]);
   }
   console.log(data);
@@ -86,18 +86,18 @@ function plot2(data){
       yAxis: {
           min: 0,
           title: {
-              text: 'Companies (Regsitraions)'
+              text: 'Companies (Registrations)'
           }
       },
       legend: {
           enabled: false
       },
       tooltip: {
-          pointFormat: ': <b>{point.y:.1f} Registraions</b>'
+          pointFormat: ': <b>{point.y:.1f} Registrations</b>'
       },
       series: [{
           name: 'Registrations per year',
-          data: seriesdata,
+          data: seriesData,
           dataLabels: {
               enabled: true,
               rotation: -90,
@@ -118,9 +118,9 @@ function plot2(data){
 //3rd solution
 function plot3(data){
     const seriesData =[];
-    const lableData =[];
+    const labelData =[];
       for(let i in data){
-        lableData.push(i);
+        labelData.push(i);
         seriesData.push([i,data[i]]);
         console.log(i,data[i]);
           
@@ -207,14 +207,14 @@ function plot4(data){
     let str5 = 'Manufacture of basic metals';
     let str6 = "Financial intermediation";
     
-    //creating a array to strore the iterated data
+    //creating a array to store the iterated data
     nestedData = [];
 
     //fetching only the required strings from series data
     for(let i=0;i<seriesData.length;i++){
 
         //since years are stored first followed by dictionary.
-        //dictionaries are stored in odd positions so acessing the odd positions and fetching the required strings
+        //dictionaries are stored in odd positions so accessing the odd positions and fetching the required strings
         if(i%2==1){
             nestedData.push(str1,seriesData[i][str1]);
             nestedData.push(str2,seriesData[i][str2]);
@@ -265,7 +265,7 @@ function plot4(data){
             console.log(nestedData[j]);
         }
 
-    // High chart plottings for 4th problem
+    // High chart plotting for 4th problem
     Highcharts.chart('container4', {
       chart: {
           type: 'bar'

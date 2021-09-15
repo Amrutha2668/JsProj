@@ -1,15 +1,15 @@
 //function to fetch json file
 function dataFormat() {
-  fetch("./jOne.json")
+  fetch("jOne.json")
     .then(r => r.json())
     .then(plot);
-  fetch("./jTwo.json")
+  fetch("jTwo.json")
     .then(r => r.json())
     .then(plot2);
-  fetch("./jThree.json")
+  fetch("jThree.json")
     .then(r => r.json())
     .then(plot3);
-  fetch("./jFour.json")
+  fetch("jFour.json")
     .then(r => r.json())
     .then(plot4);
 

@@ -33,15 +33,15 @@ namespace DataProj
             for (int i = 2000; i <= 2019; i++) regYears[i] = 0;
 
             /*3rd --no. of times a company reg by pba in 2015 */
-            Dictionary<string, int> prncAct = new Dictionary<string, int>();
+            Dictionary<string, int> principalAct = new Dictionary<string, int>();
 
             /*4th --no. of times a company grouped on both year and pba from the year 2000-19 */
-            var compGrpd = new SortedDictionary<int, Dictionary<string, int>>();
+            var companyGrouped = new SortedDictionary<int, Dictionary<string, int>>();
 
             /*1st sol*/
-            using (var strmReader = new StreamReader(@"C:\Users\Ammu\Downloads\WestBengal.csv"))
+            using (var streamReader = new StreamReader(@"C:\Users\Ammu\Downloads\WestBengal.csv"))
             {
-                using (var csvRead = new CsvReader(strmReader, CultureInfo.InvariantCulture))
+                using (var csvRead = new CsvReader(streamReader, CultureInfo.InvariantCulture))
                 {
                     var recs = csvRead.GetRecords<dynamic>();
                     foreach (var rec in recs)
@@ -77,8 +77,8 @@ namespace DataProj
                         /*3rd sol condition is reg year must be 2015 and pba not equal to NA */
                         if (year == 2015 && !(principal.Equals("NA")))
                         {
-                            if (!prncAct.ContainsKey(principal)) prncAct.Add(principal, 1);
-                            else prncAct[principal]++;
+                            if (!principalAct.ContainsKey(principal)) principalAct.Add(principal, 1);
+                            else principalAct[principal]++;
                         } //end of 3rd sol
 
                         /*4th sol reg n pba field must not be NA */
@@ -87,12 +87,12 @@ namespace DataProj
                             if ((year >= 2000 && year <= 2019))
                             {
                                 //adding element to main dictionary
-                                if (!compGrpd.ContainsKey(year)) compGrpd.Add(year, new Dictionary<string, int>());
+                                if (!companyGrouped.ContainsKey(year)) companyGrouped.Add(year, new Dictionary<string, int>());
                                 else
                                 {
                                     //sub dictionary
-                                    if (!compGrpd[year].ContainsKey(principal)) compGrpd[year].Add(principal, 1);
-                                    else compGrpd[year][principal]++;
+                                    if (!companyGrouped[year].ContainsKey(principal)) companyGrouped[year].Add(principal, 1);
+                                    else companyGrouped[year][principal]++;
                                 }
                             }
                         } //end of 4th sol
@@ -101,16 +101,16 @@ namespace DataProj
                 } //1st using loop's
             }
 
-            //string[] l = {$"{authCap}",$"{regYears}",$"{prncAct}",$"{compGrpd}"};
+            //string[] l = {$"{authCap}",$"{regYears}",$"{principalAct}",$"{companyGrouped}"};
 
             //Serializing the object to json file.
             String json1 = JsonConvert.SerializeObject(authCap, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"D:/MountBlue/JsProj/jOne.json", json1);
             String json2 = JsonConvert.SerializeObject(regYears, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"D:/MountBlue/JsProj/jTwo.json", json2);
-            String json3 = JsonConvert.SerializeObject(prncAct, Newtonsoft.Json.Formatting.Indented);
+            String json3 = JsonConvert.SerializeObject(principalAct, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"D:/MountBlue/JsProj/jThree.json", json3);
-            String json4 = JsonConvert.SerializeObject(compGrpd, Newtonsoft.Json.Formatting.Indented);
+            String json4 = JsonConvert.SerializeObject(companyGrouped, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"D:/MountBlue/JsProj/jFour.json", json4);
             Console.WriteLine("success");
             Console.ReadLine();
